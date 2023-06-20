@@ -1,31 +1,28 @@
-const path = require('path');
+import { resolve } from 'path';
 
-module.exports = {
-  entry: './src/index.js',
-  output: {
-    path: path.resolve(__dirname, 'dist'),
+export const entry = './src/index.js';
+export const output = {
+    path: resolve(__dirname, 'dist'),
     filename: 'bundle.js',
     publicPath: '/',
-  },
-  module: {
+};
+export const module = {
     rules: [
-      {
-        test: /\.(js|jsx)$/,
-        exclude: /node_modules/,
-        use: {
-          loader: 'babel-loader',
-          options: {
-            presets: ['@babel/preset-env', '@babel/preset-react'],
-          },
+        {
+            test: /\.(js|jsx)$/,
+            exclude: /node_modules/,
+            use: {
+                loader: 'babel-loader',
+                options: {
+                    presets: ['@babel/preset-env', '@babel/preset-react'],
+                },
+            },
         },
-      },
     ],
-  },
-  devServer: {
-    contentBase: path.resolve(__dirname, 'dist'),
+};
+export const devServer = {
+    contentBase: resolve(__dirname, 'dist'),
     publicPath: '/',
     port: 8080,
     historyApiFallback: true,
-  },
-  mode: 'development'
 };
