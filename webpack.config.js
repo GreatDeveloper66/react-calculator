@@ -27,4 +27,5 @@ module.exports = {
     port: 8080,
     historyApiFallback: true,
   },
+  mode: 'development'
 };
