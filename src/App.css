@@ -15,13 +15,14 @@
   
   .calculator-display {
     width: 100%;
-    height: 60px;
     margin-bottom: 20px;
     background-color: #fff;
     border: 1px solid #ccc;
     border-radius: 5px;
     text-align: right;
-    padding: 10px;
+    padding-top: 10px;
+    padding-bottom: 10px;
+    height: 60px;
   }
 
   .top-display {
@@ -33,6 +34,17 @@
     font-size: 20px;
     margin: 0;
   }
+  
+  .calculator-expression {
+    font-size: 14px;
+    opacity: 0.6;
+  }
+  
+  .calculator-current-value {
+    font-size: 20px;
+    margin: 0;
+  }
+  
   
   .calculator-buttons {
     display: grid;
