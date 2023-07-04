@@ -1,11 +1,20 @@
 import React from 'react';
+import './App.css';
+import CalculatorButtons from './CalculatorButtons.js';
+import CalculatorDisplay from './CalculatorDisplay.js';
+import CalculatorProvider from './CalculatorContext.js';
 
 const App = () => {
   return (
-    <div>
-      <h1>Hello, React!</h1>
-    </div>
+    <CalculatorProvider>
+      <div className="calculator">
+        <h1>Calculator</h1>
+        <CalculatorDisplay />
+        <CalculatorButtons />
+      </div>
+    </CalculatorProvider>
   );
 };
 
 export default App;
+
