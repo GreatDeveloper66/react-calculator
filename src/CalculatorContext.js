@@ -26,6 +26,18 @@ const CalculatorProvider = ({ children }) => {
               newDisplayValue = '';
               newExpression = '';
               break;
+            case 'CE':
+              if(newDisplayValue === 'Error' || newDisplayValue.length == 1 || newDisplayValue === '') {
+                newDisplayValue = '0';
+              } else {
+                newDisplayValue = newDisplayValue.slice(0, -1);
+              }
+              if(newExpression === 'Error' || newExpression.length == 1 || newExpression === '') {
+                newExpression = '0';
+              } else {
+                newExpression = newExpression.slice(0, -1);
+              }
+              break;
             case '=':
               // Perform calculations
               try {
