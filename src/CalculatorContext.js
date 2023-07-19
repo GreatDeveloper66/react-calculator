@@ -1,4 +1,7 @@
 import React, { createContext, useState } from 'react';
+import Parser from 'expr-eval';
+const evaluate = Parser.evaluate;
+
 
 export const CalculatorContext = createContext();
 
@@ -38,10 +41,15 @@ const CalculatorProvider = ({ children }) => {
                 newExpression = newExpression.slice(0, -1);
               }
               break;
+            case 'log':
+              // Perform calculations
+              newDisplayValue += 'log ';
+              newExpression += 'log ';
+              break;
             case '=':
               // Perform calculations
               try {
-                const result = eval(newExpression);
+                const result = evaluate(newExpression);
                 newDisplayValue = result.toString();
                 newExpression = result.toString();
               } catch (error) {
