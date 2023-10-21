@@ -1,4 +1,14 @@
 import React, { createContext, useState } from 'react';
+import { handleC } from './utilities/handleC.js';
+import { handleCE } from './utilities/handleCE.js';
+import { handleDelete } from './utilities/handleDelete.js';
+import { handleEquals } from './utilities/handleEquals.js';
+import { handleNumbers } from './utilities/handleNumbers.js';
+import { handleOperators } from './utilities/handleOperators.js';
+import { handlePeriod } from './utilities/handlePeriod.js';
+//import { handleSquareRoot } from './utilities/handleSquareRoot';
+
+
 
 export const CalculatorContext = createContext();
 
@@ -12,99 +22,45 @@ const CalculatorProvider = ({ children }) => {
 
   const handleButtonClick = value => {
     setState(prevState => {
-      let newDisplayValue = prevState.displayValue;
-      let newExpression = prevState.expression;
-
+      
       switch (value) {
         case 'C':
           // Clear the display and expression
-          newDisplayValue = '0';
-          newExpression = '';
-          break;
+          return handleC(prevState);
         case 'CE':
           // Clear the last character from the display and expression
-          newDisplayValue =
-            newDisplayValue === 'Error' || newDisplayValue.length <= 1
-              ? '0'
-              : newDisplayValue.slice(0, -1);
-          newExpression = newExpression.slice(0, -1);
-          break;
+          return handleCE(prevState);
         case '=':
           // Perform calculations
           // Perform calculations
-          try {
-            if (newExpression.endsWith('Math.sqrt(')) {
-              // If the expression ends with 'Math.sqrt(', it means the square root operation is not complete
-              newDisplayValue = 'Error';
-              newExpression = '';
-            } else {
-              // Append a closing parenthesis before evaluating to complete any pending square root operation
-              if (newExpression.includes('Math.sqrt(')) {
-                newExpression += ')';
-              }
-              newDisplayValue = Function('return ' + newExpression)();
-              newExpression = newDisplayValue.toString();
-            }
-          } catch (error) {
-            newDisplayValue = 'Error';
-            newExpression = '';
-          }
-          break;
-
+          return handleEquals(prevState);
         case 'DEL':
           // Delete the last character from the display and expression
-          newDisplayValue = newDisplayValue.slice(0, -1);
-          newExpression = newExpression.slice(0, -1);
-          break;
+          return handleDelete(prevState);
         case '+':
         case '-':
         case '*':
         case '/':
           // Handle operators
-          if (endsWithOperator(newExpression)) {
-            // Replace the last operator with the new one
-            newExpression = newExpression.slice(0, -1) + value;
-          } else {
-            newExpression += value;
-          }
-          break;
+          return handleOperators(prevState, value);
         case '.':
           // Handle decimal point
-          if (!newDisplayValue.includes('.')) {
-            newDisplayValue += value;
-            newExpression += value;
-          }
-          break;
+          return handlePeriod(prevState, value);
         case '':
           // Handle square root
           charSymbol = "&#8730;";
 
-          newDisplay += charSymbol;
+          newDisplayValue += charSymbol;
           newExpression += 'Math.sqrt(';
           break;
         default:
           // Handle numbers
-          if (newDisplayValue === '0' || endsWithOperator(newExpression)) {
-            newDisplayValue = value;
-          } else {
-            newDisplayValue += value;
-          }
-          newExpression += value;
-          break;
+          return handleNumbers(prevState, value);
       }
-
-      return {
-        ...prevState,
-        displayValue: newDisplayValue,
-        expression: newExpression
-      };
     });
   };
 
-  const endsWithOperator = expression => {
-    const operators = ['+', '-', '*', '/'];
-    return operators.some(operator => expression.endsWith(operator));
-  };
+
 
   const contextValue = {
     state,
