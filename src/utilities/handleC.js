@@ -1,11 +1,10 @@
-
-
-export const handleC = (prevState,value) => {
-    let newDisplayValue = '0';
-    let newExpression = '';
+export const handleC = (prevState) => {
+    let { displayValue, expression } = prevState;
+    displayValue = '0';
+    expression = '';
     return {
         ...prevState,
-        displayValue: newDisplayValue,
-        expression: newExpression
+        displayValue: displayValue,
+        expression: expression
     };
 };
