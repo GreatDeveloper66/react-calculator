@@ -6,6 +6,7 @@ import { handleEquals } from './utilities/handleEquals.js';
 import { handleNumbers } from './utilities/handleNumbers.js';
 import { handleOperators } from './utilities/handleOperators.js';
 import { handlePeriod } from './utilities/handlePeriod.js';
+import { handleSquare } from './utilities/handleSquare.js';
 //import { handleSquareRoot } from './utilities/handleSquareRoot';
 
 
@@ -22,7 +23,7 @@ const CalculatorProvider = ({ children }) => {
 
   const handleButtonClick = value => {
     setState(prevState => {
-      
+
       switch (value) {
         case 'C':
           // Clear the display and expression
@@ -46,13 +47,9 @@ const CalculatorProvider = ({ children }) => {
         case '.':
           // Handle decimal point
           return handlePeriod(prevState, value);
-        case '':
-          // Handle square root
-          charSymbol = "&#8730;";
-
-          newDisplayValue += charSymbol;
-          newExpression += 'Math.sqrt(';
-          break;
+        case 'x^2':
+          // Handle square of number
+          return handleSquare(prevState);
         default:
           // Handle numbers
           return handleNumbers(prevState, value);
