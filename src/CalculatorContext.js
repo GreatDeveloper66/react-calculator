@@ -11,6 +11,7 @@ import { handleSin } from './utilities/handleSin.js';
 import { handleSquareRoot } from './utilities/handleSquareRoot.js';
 import { handleCos } from './utilities/handleCos.js';
 import { handleTan } from './utilities/handleTan.js';
+import { handleLog } from './utilities/handleLog.js';
 
 
 
@@ -64,6 +65,8 @@ const CalculatorProvider = ({ children }) => {
           case 'tan':
             // Handle tangent of a number
           return handleTan(prevState);
+          case 'log':
+            return handleLog(prevState);
         default:
           // Handle numbers
           return handleNumbers(prevState, value);

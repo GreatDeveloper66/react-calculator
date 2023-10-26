@@ -1,3 +1,5 @@
+import { endsWithNumber, findNumber } from '../helpers/helperFunctions.js'
+
 export const handleSin = (prevState) => {
     let { displayValue, expression } = prevState;
     if(endsWithNumber(displayValue)) {
@@ -13,12 +15,3 @@ export const handleSin = (prevState) => {
 };
 
 
-function endsWithNumber(displayValue) {
-    const regex = /[0-9]$/;
-    return regex.test(displayValue);
-}
-
-function findNumber(displayValue) {
-    const regex = /[0-9]+$/;
-    return displayValue.match(regex)[0];
-}

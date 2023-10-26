@@ -1,5 +1,4 @@
-import helperFunctions from "../helpers/helperFunctions.js";
-const { endsWithNumber, findNumber } = helperFunctions;
+import { endsWithNumber, findNumber } from '../helpers/helperFunctions.js'
 
 export const handleTan = (prevState) => {
     let { displayValue, expression } = prevState;

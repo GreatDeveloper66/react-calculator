@@ -1,10 +1,11 @@
+
 import { endsWithNumber, findNumber } from '../helpers/helperFunctions.js';
 
-export const handleCos = (prevState) => {
+export const handleLog = (prevState) => {
     let { displayValue, expression } = prevState;
     if(endsWithNumber(displayValue)) {
         const number = findNumber(displayValue);
-        displayValue = Math.cos(number).toString();
+        displayValue = Math.log10(number).toString();
         expression = expression.slice(0, -number.length) + displayValue;
     }
     return {
@@ -13,5 +14,6 @@ export const handleCos = (prevState) => {
         expression: expression
     };
 };
-
-
+// Path: src/utilities/handleSquare.js
+// Compare this snippet from src/utilities/handleSquareRoot.js:
+// import { endsWithNumber, findNumber } from '../helpers/helperFunctions.js';

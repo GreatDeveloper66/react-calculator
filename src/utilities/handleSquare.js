@@ -1,3 +1,5 @@
+import { endsWithNumber, findNumber } from '../helpers/helperFunctions.js';
+
 export const handleSquare = (prevState) => {
   let { displayValue, expression } = prevState;
     if(endsWithNumber(displayValue)) {
@@ -13,14 +15,6 @@ export const handleSquare = (prevState) => {
     expression: expression
   };
 }
-function endsWithNumber(displayValue) {
-    const regex = /[0-9]$/;
-    return regex.test(displayValue);
-}
 
-function findNumber(displayValue) {
-    const regex = /[0-9]+$/;
-    return displayValue.match(regex)[0];
-}
 
 

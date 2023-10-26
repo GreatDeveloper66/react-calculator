@@ -1,3 +1,5 @@
+import { endsWithOperator } from '../helpers/helperFunctions.js';
+
 export const handleNumbers = (prevState, value) => {
     let { displayValue, expression } = prevState;
     if (displayValue === '0') {
@@ -18,7 +20,4 @@ export const handleNumbers = (prevState, value) => {
     };
 }
 
-const endsWithOperator = (str) => {
-    return str.endsWith('+') || str.endsWith('-') || str.endsWith('*') || str.endsWith('/');
-}
 
