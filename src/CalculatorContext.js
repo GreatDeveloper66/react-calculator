@@ -13,6 +13,8 @@ import { handleCos } from './utilities/handleCos.js';
 import { handleTan } from './utilities/handleTan.js';
 import { handleLog } from './utilities/handleLog.js';
 import { handleln } from './utilities/handleln.js';
+import { handleFactorial } from './utilities/handleFactorial.js';
+
 
 
 
@@ -55,21 +57,31 @@ const CalculatorProvider = ({ children }) => {
         case 'x^2':
           // Handle square of number
           return handleSquare(prevState);
-          case '√':
-            return handleSquareRoot(prevState);
-          case 'sin':
-            // Handle sine of a number
+        case '√':
+          return handleSquareRoot(prevState);
+        case 'sin':
+          // Handle sine of a number
           return handleSin(prevState);
-          case 'cos':
-            // Handle cosine of a number
+        case 'cos':
+          // Handle cosine of a number
           return handleCos(prevState);
-          case 'tan':
-            // Handle tangent of a number
+        case 'tan':
+          // Handle tangent of a number
           return handleTan(prevState);
-          case 'log':
-            return handleLog(prevState);
-            case 'ln':
-              return handleln(prevState);
+        case 'log':
+          return handleLog(prevState);
+        case 'ln':
+          return handleln(prevState);
+        case 'x!':
+          return handleFactorial(prevState);
+        case 'x^1/y':
+          return handlePower(prevState);
+        case 'x^y':
+          return handlePower(prevState);
+        case '1/x':
+          return handleReciprocal(prevState);
+        case 'ANS':
+          return handleAns(prevState);
         default:
           // Handle numbers
           return handleNumbers(prevState, value);

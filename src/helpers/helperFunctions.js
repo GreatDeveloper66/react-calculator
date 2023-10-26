@@ -11,3 +11,11 @@ export const findNumber = (displayValue) => {
 export const endsWithOperator = (str) => {
     return str.endsWith('+') || str.endsWith('-') || str.endsWith('*') || str.endsWith('/');
 }
+
+export const factorial = (n) => {
+    if (n === 0) {
+        return 1;
+    }
+    return n * factorial(n - 1);
+}
+
