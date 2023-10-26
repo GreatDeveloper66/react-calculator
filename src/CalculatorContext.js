@@ -10,6 +10,7 @@ import { handleSquare } from './utilities/handleSquare.js';
 import { handleSin } from './utilities/handleSin.js';
 import { handleSquareRoot } from './utilities/handleSquareRoot.js';
 import { handleCos } from './utilities/handleCos.js';
+import { handleTan } from './utilities/handleTan.js';
 
 
 
@@ -60,6 +61,9 @@ const CalculatorProvider = ({ children }) => {
           case 'cos':
             // Handle cosine of a number
           return handleCos(prevState);
+          case 'tan':
+            // Handle tangent of a number
+          return handleTan(prevState);
         default:
           // Handle numbers
           return handleNumbers(prevState, value);
