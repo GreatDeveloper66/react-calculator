@@ -8,7 +8,8 @@ import { handleOperators } from './utilities/handleOperators.js';
 import { handlePeriod } from './utilities/handlePeriod.js';
 import { handleSquare } from './utilities/handleSquare.js';
 import { handleSin } from './utilities/handleSin.js';
-//import { handleSquareRoot } from './utilities/handleSquareRoot';
+import { handleSquareRoot } from './utilities/handleSquareRoot.js';
+import { handleCos } from './utilities/handleCos.js';
 
 
 
@@ -51,9 +52,14 @@ const CalculatorProvider = ({ children }) => {
         case 'x^2':
           // Handle square of number
           return handleSquare(prevState);
+          case '√':
+            return handleSquareRoot(prevState);
           case 'sin':
             // Handle sine of a number
           return handleSin(prevState);
+          case 'cos':
+            // Handle cosine of a number
+          return handleCos(prevState);
         default:
           // Handle numbers
           return handleNumbers(prevState, value);

@@ -38,7 +38,7 @@ const CalculatorButtons = () => {
                 <CalculatorButton type="operator" value="ln" onClick={() => handleButtonClick('ln')} />
                 <CalculatorButton type="operator" value="x^2" onClick={() => handleButtonClick('x^2')} />
                 <CalculatorButton type="operator" value="/" onClick={() => handleButtonClick('/')} />
-                <CalculatorButton type="operator" value="&radic;" onClick={() => handleButtonClick('&radic;')} />
+                <CalculatorButton type="operator" value="√" onClick={() => handleButtonClick('√')} />
                 <CalculatorButton type="operator" value="=" onClick={() => handleButtonClick('=')} />
                 
 
