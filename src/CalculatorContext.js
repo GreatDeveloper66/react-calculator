@@ -12,6 +12,7 @@ import { handleSquareRoot } from './utilities/handleSquareRoot.js';
 import { handleCos } from './utilities/handleCos.js';
 import { handleTan } from './utilities/handleTan.js';
 import { handleLog } from './utilities/handleLog.js';
+import { handleln } from './utilities/handleln.js';
 
 
 
@@ -67,6 +68,8 @@ const CalculatorProvider = ({ children }) => {
           return handleTan(prevState);
           case 'log':
             return handleLog(prevState);
+            case 'ln':
+              return handleln(prevState);
         default:
           // Handle numbers
           return handleNumbers(prevState, value);
