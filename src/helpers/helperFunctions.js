@@ -19,3 +19,7 @@ export const factorial = (n) => {
     return n * factorial(n - 1);
 }
 
+export const endsWithLeftParen = (str) => {
+    return str.endsWith('(');
+}
+

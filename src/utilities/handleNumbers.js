@@ -1,11 +1,11 @@
-import { endsWithOperator } from '../helpers/helperFunctions.js';
+import { endsWithOperator, endsWithLeftParen } from '../helpers/helperFunctions.js';
 
 export const handleNumbers = (prevState, value) => {
     let { displayValue, expression } = prevState;
     if (displayValue === '0') {
         displayValue = value;
         expression = value;
-    } else if(endsWithOperator(expression)){
+    } else if(endsWithOperator(expression) || endsWithLeftParen(expression)){
         displayValue = value;
         expression += value;
     }
