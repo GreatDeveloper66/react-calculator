@@ -50,8 +50,8 @@ const CalculatorButtons = () => {
                 <CalculatorButton type="function" value="8" onClick={() => handleButtonClick('8')} />
                 <CalculatorButton type="function" value="sin" onClick={() => handleButtonClick('sin')} />
                 <CalculatorButton type="function" value="1/x" onClick={() => handleButtonClick('1/x')} />
-                <CalculatorButton type="function" value="x^1/y" onClick={() => handleButtonClick('x^1/y')} />
-                <CalculatorButton type="function" value="x^y" onClick={() => handleButtonClick('x^y')} />   
+                <CalculatorButton type="function" value="x^1/3" onClick={() => handleButtonClick('x^1/y')} />
+                <CalculatorButton type="function" value="x^3" onClick={() => handleButtonClick('x^y')} />   
                 <CalculatorButton type="function" value="*" onClick={() => handleButtonClick('*')} />
                 <CalculatorButton type="function" value="DEL" onClick={() => handleButtonClick('DEL')} />
                 <CalculatorButton type="function" value="ANS" onClick={() => handleButtonClick('ANS')} />

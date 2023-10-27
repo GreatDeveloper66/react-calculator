@@ -14,6 +14,14 @@ import { handleTan } from './utilities/handleTan.js';
 import { handleLog } from './utilities/handleLog.js';
 import { handleln } from './utilities/handleln.js';
 import { handleFactorial } from './utilities/handleFactorial.js';
+import { handleCubeRoot } from './utilities/handleCubeRoot.js';
+import { handleCube } from './utilities/handleCube.js';
+import { handleReciprocal } from './utilities/handleReciprocal.js';
+import { handleAns } from './utilities/handleAns.js';
+import { handlePi } from './utilities/handlePi.js';
+import { handleOpenLeftParen } from './utilities/handleOpenLeftParen.js';
+import { handleOpenRightParen } from './utilities/handleOpenRightParen.js';
+
 
 
 
@@ -75,16 +83,22 @@ const CalculatorProvider = ({ children }) => {
         case 'x!':
           return handleFactorial(prevState);
         case 'x^1/y':
-          return handlePower(prevState);
+          return handleCubeRoot(prevState);
         case 'x^y':
-          return handlePower(prevState);
+          return handleCube(prevState);
         case '1/x':
           return handleReciprocal(prevState);
         case 'ANS':
           return handleAns(prevState);
-        default:
+          case '&Pi;':
+            return handlePi(prevState);
+            case '(':
+              return handleOpenLeftParen(prevState);
+              case ')':
+                return handleOpenRightParen(prevState);
+          default:
           // Handle numbers
-          return handleNumbers(prevState, value);
+        return handleNumbers(prevState, value);
       }
     });
   };
