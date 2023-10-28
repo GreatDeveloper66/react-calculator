@@ -1,4 +1,6 @@
 const { resolve } = require('path');
+const dotenviornment = require('dotenv')
+require('dotenv').config();
 
 module.exports = {
   entry: './src/index.js',
@@ -30,7 +32,9 @@ module.exports = {
     static: {
       directory: resolve(__dirname, 'dist'),
     },
-    port: 8080,
+    port: process.env.PORT,
     historyApiFallback: true,
   },
 };
+
+

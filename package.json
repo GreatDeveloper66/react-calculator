@@ -26,6 +26,7 @@
     "webpack-dev-server": "^4.15.1"
   },
   "dependencies": {
+    "dotenv": "^16.3.1",
     "expr-eval": "^2.0.2"
   }
 }
