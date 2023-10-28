@@ -4,7 +4,7 @@ export const endsWithNumber = (displayValue) => {
 }   
 
 export const findNumber = (displayValue) => {
-    const regex = /[0-9]+$/;
+    const regex = /^\d+(\.\d+)?$/;
     return displayValue.match(regex)[0];
 }
 
