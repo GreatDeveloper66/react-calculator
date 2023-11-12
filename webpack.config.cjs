@@ -35,6 +35,7 @@ module.exports = {
     port: process.env.PORT,
     historyApiFallback: true,
   },
+  allowedHosts: "all"
 };
 
 
