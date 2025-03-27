@@ -1,19 +1,55 @@
+body {
+  background: url("./assets/images/tim-mossholder-ysDq0fY-bzo-unsplash.jpg");
+  background-size: cover;
+  background-position: center;
+  background-attachment: fixed;
+}
+
+@font-face {
+  font-family: 'Digital-7';
+  src: url('./assets/fonts/Digital-7-font/digital-7.ttf') format('truetype');
+  font-weight: normal;
+  font-style: normal;
+}
+
+/* Apply to Calculator Display */
+.calculator-display {
+  font-family: 'Digital-7', sans-serif;
+  font-size: 2rem;
+  text-align: right;
+  color: #00FF00; /* Optional: Green LED-style */
+  background-color: black;
+  padding: 10px;
+  border-radius: 5px;
+  box-shadow: inset 5px 5px 10px rgba(0, 0, 0, 0.2);
+  height: 60px;
+}
+
+
+
 .calculator {
     width: 300px;
     margin: 0 auto;
     padding: 20px;
-    border: 1px solid #ccc;
-    border-radius: 5px;
-    background-color: #f5f5f5;
+    border: 2px solid #000;
+    border-radius: 10px;
+    background-color: #F0F8FF;
     text-align: center;
-  }
+    box-shadow: 10px 10px 20px rgba(0, 0, 0, 0.35);
+   
+}
+
+
+
+
   
   .calculator h1 {
+    font-family: 'Digital-7', sans-serif;
     font-size: 24px;
     margin-bottom: 20px;
   }
   
-  .calculator-display {
+  /* .calculator-display {
     width: 100%;
     margin-bottom: 20px;
     background-color: #fff;
@@ -23,24 +59,29 @@
     padding-top: 10px;
     padding-bottom: 10px;
     height: 60px;
-  }
+    box-shadow: inset 5px 5px 10px rgba(0, 0, 0, 0.2);
+  } */
 
   .top-display {
+    font-family: 'Digital-7', sans-serif;
     font-size: 14px;
     opacity: 0.6;
   }
 
   .bottom-display {
+    font-family: 'Digital-7', sans-serif;
     font-size: 20px;
     margin: 0;
   }
   
   .calculator-expression {
+    font-family: 'Digital-7', sans-serif;
     font-size: 14px;
     opacity: 0.6;
   }
   
   .calculator-current-value {
+    font-family: 'Digital-7', sans-serif;
     font-size: 20px;
     margin: 0;
   }
@@ -50,9 +91,11 @@
     display: grid;
     grid-template-columns: repeat(4, 1fr);
     gap: 10px;
+    margin-top: 20px;
   }
   
   .calculator-button {
+    font-family: 'Digital-7', sans-serif;
     width: 100%;
     height: 40px;
     background-color: #eee;
