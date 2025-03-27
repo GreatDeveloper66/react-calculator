@@ -31,7 +31,7 @@ export const CalculatorContext = createContext();
 const CalculatorProvider = ({ children }) => {
   const initialState = {
     displayValue: '0',
-    expression: ''
+    expression: '0'
   };
 
   const [state, setState] = useState(initialState);
