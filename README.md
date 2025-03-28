@@ -28,7 +28,7 @@ npm run start
 ```
 
 ## Configuration
-Describe any environment variables or configurations required.
+port number in environment variables used for deployment
 
 ## Contributing
 1. Fork the repository
