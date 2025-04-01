@@ -32,6 +32,7 @@
   },
   "dependencies": {
     "dotenv": "^16.3.1",
-    "expr-eval": "^2.0.2"
+    "expr-eval": "^2.0.2",
+    "mathjs": "^14.4.0"
   }
 }
