@@ -1,8 +1,7 @@
-const math = require('mathjs'); // Importing mathjs for mathematical operations
-const { evaluate } = math; // Importing evaluate function from mathjs
+import { evaluate } from 'mathjs'; // Importing evaluate function from mathjs
 
 export const handleEquals = (state) => {
-  let { displayValue, expression } = state;
+  let { expression } = state;
 
   try {
     // Evaluate the current expression

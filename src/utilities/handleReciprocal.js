@@ -1,5 +1,5 @@
-const math = require("mathjs");
-const evaluate = math.evaluate; // Import the evaluate function from mathjs
+import { evaluate } from "mathjs";
+// Importing evaluate function from mathjs
 
 export const handleReciprocal = (state) => {
     let { displayValue, expression } = state;

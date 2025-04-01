@@ -1,5 +1,5 @@
-const math = require("mathjs");
-const { sqrt, evaluate } = math; // Import the sqrt function and evaluate from mathjs
+import { sqrt, evaluate } from "mathjs";
+// Import the sqrt function and evaluate from mathjs
 
 export const handleSquareRoot = (state) => {
   let { displayValue, expression } = state;

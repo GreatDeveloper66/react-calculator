@@ -1,5 +1,5 @@
-const math = require("mathjs");
-const pi = math.pi; // Get the value of π from mathjs
+import { pi } from "mathjs";
+// Importing pi constant from mathjs
 
 export const handlePi = (state) => {
   let { displayValue, expression, evaluated } = state;

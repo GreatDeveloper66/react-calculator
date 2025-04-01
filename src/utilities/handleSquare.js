@@ -1,5 +1,4 @@
-const math = require("mathjs");
-const { pow, evaluate } = math; // Import the pow function and evaluate from mathjs
+import { pow, evaluate } from "mathjs"; // Import the pow function and evaluate from mathjs
 
 
 export const handleSquare = (state) => {

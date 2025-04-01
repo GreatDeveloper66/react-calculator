@@ -1,5 +1,4 @@
-const math = require("mathjs"); // Importing mathjs for mathematical operations
-const { evaluate, pow } = math;
+import { pow, evaluate } from "mathjs";
 
 export const handleCube = (state) => {
     let { displayValue, expression } = state;

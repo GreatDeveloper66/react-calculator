@@ -1,50 +1,26 @@
-import { factorial } from "../helpers/helperFunctions.js";
+import { evaluate, factorial } from 'mathjs';
 
-export const handleFactorial = (state) => {
-    let { displayValue, expression } = state;
-    const lastChar = displayValue.slice(-1);
-  
-    // Prevent factorial on an operator or empty display
-    if (displayValue === "0" || displayValue === "" || /[\+\-\*\/\^%]/.test(lastChar)) {
-      return state;
-    }
-  
-    // Case 1: Last character is a number → find full number and calculate factorial
-    if (/\d/.test(lastChar)) {
-      const match = displayValue.match(/(\d+\.?\d*)$/);
-      if (match) {
-        const number = match[1];
-        const numInt = parseInt(number, 10);
-        
-        // Ensure number is a non-negative integer
-        if (numInt < 0) {
-          return state; // Factorial is undefined for negative numbers
-        }
-  
-        // Calculate factorial
-        const factorialResult = factorial(numInt);
+export const handleFactorial = (prevState) => {
+    try {
+        const evaluatedValue = evaluate(prevState.expression);
+        if (!Number.isInteger(evaluatedValue) || evaluatedValue < 0) throw new Error("Invalid input");
+
+        const factorialValue = factorial(evaluatedValue);
+        const displayValue = factorialValue.toString();
+
         return {
-          displayValue: displayValue.replace(/(\d+\.?\d*)$/, factorialResult.toString()),
-          expression: expression.replace(/(\d+\.?\d*)$/, factorialResult.toString()),
+            ...prevState,
+            displayValue: displayValue,
+            expression: displayValue,
+            evaluated: true,
+            lastAnswer: evaluatedValue
         };
-      }
-    }
-  
-    // Case 2: Last character is a closing parenthesis → factorial of the expression inside
-    if (lastChar === ")") {
-      let openIndex = displayValue.lastIndexOf("(");
-      if (openIndex !== -1) {
-        const insideExpr = displayValue.slice(openIndex + 1, -1); // Extract inside expression
-        const evaluated = math.evaluate(insideExpr); // Evaluate expression inside parentheses
-        const factorialResult = factorial(evaluated);
+    } catch (error) {
         return {
-          displayValue: displayValue.slice(0, openIndex) + factorialResult,
-          expression: expression.slice(0, openIndex) + factorialResult,
+            ...prevState,
+            displayValue: "Error",
+            expression: "",
+            evaluated: false
         };
-      }
     }
-  
-    // Default: If nothing matches, return unchanged
-    return state;
-  };
-  
+};
