@@ -1,20 +1,33 @@
-export const handleOperators = (prevState, value) => {
-    let { displayValue, expression } = prevState;
-
-    const endsWithOperator = expression => {
-        const operators = ['+', '-', '*', '/'];
-        return operators.some(operator => expression.endsWith(operator));
-    };
-
-    if (endsWithOperator(expression)) {
-        // Replace the last operator with the new one
-       expression = expression.slice(0, -1) + value;
-    } else {
-        expression += value;
+export const handleOperators = (prevState, operator) => {
+    let { displayValue, expression, evaluated } = prevState;
+  
+    // If the previous state was a result of evaluation, start a new expression by appending the operator to the result.
+    if (evaluated) {
+      evaluated = false;
+      return {
+        displayValue: displayValue + operator,
+        expression: displayValue + operator,
+        evaluated: false,
+      };
     }
+  
+    // Get the last character of the displayValue.
+    const lastChar = displayValue.slice(-1);
+  
+    // If the display already ends with an operator, replace it with the new operator.
+    if (["+", "-", "*", "/"].includes(lastChar)) {
+      return {
+        displayValue: displayValue.slice(0, -1) + operator,
+        expression: expression.slice(0, -1) + operator,
+        evaluated: false,
+      };
+    }
+  
+    // Otherwise, append the operator.
     return {
-        ...prevState,
-        displayValue: displayValue,
-        expression: expression
+      displayValue: displayValue + operator,
+      expression: expression + operator,
+      evaluated: false,
     };
-}
+  };
+  

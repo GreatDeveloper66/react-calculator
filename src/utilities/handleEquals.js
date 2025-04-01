@@ -1,26 +1,29 @@
-export const handleEquals = (prevState) => {
-    let { displayValue, expression } = prevState;
-    try {
-        if (expression.endsWith('Math.sqrt(')) {
-          // If the expression ends with 'Math.sqrt(', it means the square root operation is not complete
-          displayValue = 'Error';
-          expression = '';
-        } else {
-          // Append a closing parenthesis before evaluating to complete any pending square root operation
-          if (expression.includes('Math.sqrt(')) {
-            expression += ')';
-          }
-          let result = Function('return ' + expression)().toString();
-          displayValue = result;
-          expression = result;
-        }
-      } catch (error) {
-        displayValue = 'Error';
-        expression = '';
-      }
+const math = require('mathjs'); // Importing mathjs for mathematical operations
+const { evaluate } = math; // Importing evaluate function from mathjs
+
+export const handleEquals = (state) => {
+  let { displayValue, expression } = state;
+
+  try {
+    // Evaluate the current expression
+    const result = evaluate(expression);
+
+    // Store the result for the "ANS" button
     return {
-        ...prevState,
-        displayValue: displayValue,
-        expression: expression
+      ...state,
+      displayValue: result.toString(),  // Show the result on the display
+      expression: result.toString(),   // Optionally reset expression to the result
+      lastAnswer: result,              // Store result for "ANS"
+      evaluated: true,                 // Mark that evaluation has occurred
     };
-}
+  } catch (error) {
+    // Handle invalid expressions gracefully
+    return {
+      ...state,
+      displayValue: 'Error',  // Show error message on the display
+      expression: '',        // Clear the expression to indicate an error
+      lastAnswer: null,      // Clear previous answer
+      evaluated: false,      // Mark that the expression wasn't successfully evaluated
+    };
+  }
+};

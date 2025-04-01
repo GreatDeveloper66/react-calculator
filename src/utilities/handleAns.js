@@ -1,26 +1,20 @@
-export const handleAns = (prevState) => {
-    let { displayValue, expression } = prevState;
-    try {
-        if (expression.endsWith('Math.sqrt(')) {
-          // If the expression ends with 'Math.sqrt(', it means the square root operation is not complete
-          displayValue = 'Error';
-          expression = '';
-        } else {
-          // Append a closing parenthesis before evaluating to complete any pending square root operation
-          if (expression.includes('Math.sqrt(')) {
-            expression += ')';
-          }
-          let result = Function('return ' + expression)().toString();
-          displayValue = result;
-          expression = result;
-        }
-      } catch (error) {
-        displayValue = 'Error';
-        expression = '';
-      }
-    return {
-        ...prevState,
-        displayValue: displayValue,
-        expression: expression
-    };
-}
+export const handleAns = (state) => {
+    let { displayValue, lastAnswer } = state;
+  
+    // Case 1: If display is "0", return the current state
+    if (displayValue === "0") {
+      return state;
+    }
+  
+    // Case 2: If there's a stored answer (lastAnswer), display it
+    if (lastAnswer !== undefined) {
+      return {
+        ...state,
+        displayValue: lastAnswer.toString(),
+      };
+    }
+  
+    // Case 3: If no previous answer is stored, return the current state
+    return state;
+  };
+  

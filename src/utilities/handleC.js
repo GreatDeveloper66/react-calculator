@@ -1,10 +1,6 @@
-export const handleC = (prevState) => {
-    let { displayValue, expression } = prevState;
-    displayValue = '0';
-    expression = '0';
+export const handleC = (state) => {
     return {
-        ...prevState,
-        displayValue: displayValue,
-        expression: expression
+        displayValue: "0",  // Reset the display to "0"
+        expression: "",     // Reset the expression
     };
 };

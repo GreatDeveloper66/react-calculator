@@ -1,14 +1,13 @@
 import React, { createContext, useState } from 'react';
 import { handleC } from './utilities/handleC.js';
 import { handleCE } from './utilities/handleCE.js';
-import { handleDelete } from './utilities/handleDelete.js';
 import { handleEquals } from './utilities/handleEquals.js';
-import { handleNumbers } from './utilities/handleNumbers.js';
+import { handleDelete } from './utilities/handleDelete.js';
 import { handleOperators } from './utilities/handleOperators.js';
 import { handlePeriod } from './utilities/handlePeriod.js';
 import { handleSquare } from './utilities/handleSquare.js';
-import { handleSin } from './utilities/handleSin.js';
 import { handleSquareRoot } from './utilities/handleSquareRoot.js';
+import { handleSin } from './utilities/handleSin.js';
 import { handleCos } from './utilities/handleCos.js';
 import { handleTan } from './utilities/handleTan.js';
 import { handleLog } from './utilities/handleLog.js';
@@ -18,9 +17,20 @@ import { handleCubeRoot } from './utilities/handleCubeRoot.js';
 import { handleCube } from './utilities/handleCube.js';
 import { handleReciprocal } from './utilities/handleReciprocal.js';
 import { handleAns } from './utilities/handleAns.js';
+import { handleNumbers } from './utilities/handleNumbers.js';
 import { handlePi } from './utilities/handlePi.js';
-import { handleOpenLeftParen } from './utilities/handleOpenLeftParen.js';
-import { handleOpenRightParen } from './utilities/handleOpenRightParen.js';
+import { handleOpenLeftParen } from './utilities/handleOpenLeftParen.js'; 
+import { handleClosedRightParen } from './utilities/handleClosedRightParen.js';
+
+
+// Create a context for the calculator
+// This context will hold the state and functions for the calculator
+// It will be used to provide the state and functions to the components that need them
+// without having to pass them down through props
+
+
+
+
 
 
 
@@ -31,7 +41,9 @@ export const CalculatorContext = createContext();
 const CalculatorProvider = ({ children }) => {
   const initialState = {
     displayValue: '0',
-    expression: '0'
+    expression: '0',
+    evaluated: false,
+    lastAnswer: undefined
   };
 
   const [state, setState] = useState(initialState);
@@ -95,7 +107,7 @@ const CalculatorProvider = ({ children }) => {
             case '(':
               return handleOpenLeftParen(prevState);
               case ')':
-                return handleOpenRightParen(prevState);
+                return handleClosedRightParen(prevState);
           default:
           // Handle numbers
         return handleNumbers(prevState, value);
