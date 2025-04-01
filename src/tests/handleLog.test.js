@@ -1,4 +1,4 @@
-import { handleLn } from '../utilities/handleLog';
+import { handleLog } from '../utilities/handleLog';
 import { evaluate, log10 } from 'mathjs';
 
 jest.mock('mathjs', () => ({
@@ -18,7 +18,7 @@ describe('handleLn', () => {
         evaluate.mockReturnValue(100);
         log10.mockReturnValue(2);
 
-        const result = handleLn(prevState);
+        const result = handleLog(prevState);
 
         expect(evaluate).toHaveBeenCalledWith('100');
         expect(log10).toHaveBeenCalledWith(100);
@@ -41,7 +41,7 @@ describe('handleLn', () => {
 
         evaluate.mockReturnValue(-10);
 
-        const result = handleLn(prevState);
+        const result = handleLog(prevState);
 
         expect(evaluate).toHaveBeenCalledWith('-10');
         expect(result).toEqual({
@@ -64,7 +64,7 @@ describe('handleLn', () => {
             throw new Error('Invalid expression');
         });
 
-        const result = handleLn(prevState);
+        const result = handleLog(prevState);
 
         expect(evaluate).toHaveBeenCalledWith('invalid');
         expect(result).toEqual({

@@ -1,8 +1,22 @@
-import { countUnmatchedLeftParens, endsWithOperator } from "../helpers/helperFunctions.js";
+export const handleClosedRightParen = (prevState) => {
+    const { expression, displayValue } = prevState;
 
-// Handles the ")" button press
-export const handleClosedRightParen = (expression) => {
-    if (countUnmatchedLeftParens(expression) === 0) return expression; // No unmatched "("
-    if (endsWithOperator(expression)) return expression; // Avoids "(5+"
-    return expression + ")"; // Otherwise, just append ")"
+    // Count left and right parentheses
+    const leftParenCount = (expression.match(/\(/g) || []).length;
+    const rightParenCount = (expression.match(/\)/g) || []).length;
+
+    // Prevent adding ")" if there's no matching "("
+    if (rightParenCount >= leftParenCount) {
+        return prevState;
+    }
+
+    const newExpression = displayValue === "0" ? ")" : expression + ")";
+    const newDisplayValue = displayValue === "0" ? ")" : displayValue + ")";
+
+    return {
+        ...prevState,
+        expression: newExpression,
+        displayValue: newDisplayValue,
+        evaluated: false
+    };
 };

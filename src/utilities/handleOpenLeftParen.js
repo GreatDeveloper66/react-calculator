@@ -1,9 +1,11 @@
-import { needsImplicitMultiplication } from "../helpers/helperFunctions.js";
+export const handleOpenLeftParen = (prevState) => {
+    const newExpression = prevState.displayValue === "0" ? "(" : prevState.expression + "(";
+    const newDisplayValue = prevState.displayValue === "0" ? "(" : prevState.displayValue + "(";
 
-
-// Handles the "(" button press
-export const handleOpenLeftParen = (expression) => {
-    if (expression === "0") return "(";
-    if (needsImplicitMultiplication(expression)) return expression + "*(";
-    return expression + "(";
-}
+    return {
+        ...prevState,
+        expression: newExpression,
+        displayValue: newDisplayValue,
+        evaluated: false
+    };
+};

@@ -1,31 +1,45 @@
-import { handleOpenLeftParen } from "../utilities/handleOpenLeftParen.js";
-import { needsImplicitMultiplication } from "../helpers/helperFunctions.js";
-
-jest.mock("../helpers/helperFunctions.js", () => ({
-    needsImplicitMultiplication: jest.fn(),
-}));
+import { handleOpenLeftParen } from "../utilities/handleOpenLeftParen";
 
 describe("handleOpenLeftParen", () => {
-    afterEach(() => {
-        jest.clearAllMocks();
+    it("should add '(' to an empty expression and set displayValue to '(' when displayValue is '0'", () => {
+        const prevState = {
+            displayValue: "0",
+            expression: "",
+            evaluated: true
+        };
+
+        const result = handleOpenLeftParen(prevState);
+
+        expect(result.expression).toBe("(");
+        expect(result.displayValue).toBe("(");
+        expect(result.evaluated).toBe(false);
     });
 
-    it("should return '(' when the expression is '0'", () => {
-        const result = handleOpenLeftParen("0");
-        expect(result).toBe("(");
+    it("should append '(' to the existing expression and displayValue when displayValue is not '0'", () => {
+        const prevState = {
+            displayValue: "5",
+            expression: "5",
+            evaluated: true
+        };
+
+        const result = handleOpenLeftParen(prevState);
+
+        expect(result.expression).toBe("5(");
+        expect(result.displayValue).toBe("5(");
+        expect(result.evaluated).toBe(false);
     });
 
-    it("should append '*(' when needsImplicitMultiplication returns true", () => {
-        needsImplicitMultiplication.mockReturnValue(true);
-        const result = handleOpenLeftParen("2");
-        expect(result).toBe("2*(");
-        expect(needsImplicitMultiplication).toHaveBeenCalledWith("2");
-    });
+    it("should handle appending '(' to a complex expression", () => {
+        const prevState = {
+            displayValue: "5+3",
+            expression: "5+3",
+            evaluated: true
+        };
 
-    it("should append '(' when needsImplicitMultiplication returns false", () => {
-        needsImplicitMultiplication.mockReturnValue(false);
-        const result = handleOpenLeftParen("2");
-        expect(result).toBe("2(");
-        expect(needsImplicitMultiplication).toHaveBeenCalledWith("2");
+        const result = handleOpenLeftParen(prevState);
+
+        expect(result.expression).toBe("5+3(");
+        expect(result.displayValue).toBe("5+3(");
+        expect(result.evaluated).toBe(false);
     });
 });

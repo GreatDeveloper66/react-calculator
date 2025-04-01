@@ -1,6 +1,6 @@
 import { evaluate, log10 } from 'mathjs';
 
-export const handleLn = (prevState) => {
+export const handleLog = (prevState) => {
     try {
         const evaluatedValue = evaluate(prevState.expression);
         if (evaluatedValue <= 0) throw new Error("Invalid input");
