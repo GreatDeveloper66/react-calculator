@@ -1,3 +1,16 @@
+/**
+ * Handles the logic for appending a period (".") to the calculator's display and expression.
+ *
+ * @param {Object} prevState - The previous state of the calculator.
+ * @param {string} prevState.displayValue - The current value displayed on the calculator.
+ * @param {string} prevState.expression - The full mathematical expression being constructed.
+ * @param {boolean} prevState.evaluated - Indicates whether the previous expression was evaluated.
+ * @param {string} value - The value to append (expected to be ".").
+ * @returns {Object} - The updated state of the calculator.
+ * @returns {string} return.displayValue - The updated value to display on the calculator.
+ * @returns {string} return.expression - The updated mathematical expression.
+ * @returns {boolean} return.evaluated - Indicates whether the expression has been evaluated.
+ */
 export const handlePeriod = (prevState, value) => {
   const { displayValue, expression, evaluated } = prevState;
   

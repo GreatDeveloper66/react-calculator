@@ -1,6 +1,20 @@
 import { pow, evaluate } from "mathjs"; // Import the pow function and evaluate from mathjs
 
 
+/**
+ * Handles the squaring operation for a calculator's state.
+ * 
+ * This function modifies the `displayValue` and `expression` properties of the 
+ * calculator's state based on the current input. It supports squaring a number 
+ * or an expression enclosed in parentheses, while preventing invalid operations 
+ * such as squaring an operator or an empty display.
+ * 
+ * @param {Object} state - The current state of the calculator.
+ * @param {string} state.displayValue - The current value displayed on the calculator.
+ * @param {string} state.expression - The full mathematical expression being built.
+ * @returns {Object} The updated state with modified `displayValue` and `expression`,
+ *                   or the original state if no valid squaring operation is performed.
+ */
 export const handleSquare = (state) => {
     let { displayValue, expression } = state;
     const lastChar = displayValue.slice(-1);

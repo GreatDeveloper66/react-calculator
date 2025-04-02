@@ -28,16 +28,29 @@ import { handleClosedRightParen } from './utilities/handleClosedRightParen.js';
 // It will be used to provide the state and functions to the components that need them
 // without having to pass them down through props
 
-
-
-
-
-
-
-
-
 export const CalculatorContext = createContext();
 
+/**
+ * CalculatorProvider is a React context provider component that manages the state
+ * and logic for a calculator application. It provides the current state and a 
+ * function to handle button clicks to its children components.
+ *
+ * @component
+ * @param {Object} props - The props object.
+ * @param {React.ReactNode} props.children - The child components that will have access 
+ * to the calculator context.
+ *
+ * @returns {JSX.Element} A context provider component that wraps its children.
+ *
+ * @property {Object} state - The current state of the calculator.
+ * @property {string} state.displayValue - The value currently displayed on the calculator.
+ * @property {string} state.expression - The mathematical expression being built.
+ * @property {boolean} state.evaluated - A flag indicating if the expression has been evaluated.
+ * @property {number|undefined} state.lastAnswer - The last calculated answer, if any.
+ *
+ * @property {Function} handleButtonClick - A function to handle button clicks on the calculator.
+ * @param {string} value - The value of the button clicked.
+ */
 const CalculatorProvider = ({ children }) => {
   const initialState = {
     displayValue: '0',

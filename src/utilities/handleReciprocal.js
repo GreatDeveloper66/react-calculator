@@ -1,6 +1,20 @@
 import { evaluate } from "mathjs";
 // Importing evaluate function from mathjs
 
+/**
+ * Handles the reciprocal operation for a calculator's state.
+ *
+ * This function modifies the `displayValue` and `expression` properties of the state
+ * to reflect the reciprocal of the last number or the result of an expression enclosed
+ * in parentheses. It ensures that invalid operations, such as division by zero or
+ * applying the reciprocal to an empty display or operator, are prevented.
+ *
+ * @param {Object} state - The current state of the calculator.
+ * @param {string} state.displayValue - The current value displayed on the calculator.
+ * @param {string} state.expression - The current mathematical expression being built.
+ * @returns {Object} The updated state with the reciprocal applied, or the original state
+ *                   if the operation is invalid.
+ */
 export const handleReciprocal = (state) => {
     let { displayValue, expression } = state;
     const lastChar = displayValue.slice(-1);

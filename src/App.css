@@ -1,3 +1,33 @@
+/* 
+
+This CSS file styles a calculator web application with the following features:
+
+1. **Global Styles**:
+  - The `body` element has a full-screen background image with properties for size, position, and attachment.
+  - A custom font, 'Digital-7', is imported using the `@font-face` rule for a digital display effect.
+
+2. **Calculator Display**:
+  - `.calculator-display`: Styled to resemble a digital LED display with a green text color, black background, and inset shadow.
+
+3. **Calculator Container**:
+  - `.calculator`: Defines the main calculator container with a centered layout, rounded borders, and a light blue background.
+
+4. **Calculator Header**:
+  - `.calculator h1`: Styles the header with the 'Digital-7' font and a large font size.
+
+5. **Display Sections**:
+  - `.top-display` and `.bottom-display`: Styled for smaller and larger text displays, respectively, with opacity for the top display.
+
+6. **Expression and Current Value**:
+  - `.calculator-expression` and `.calculator-current-value`: Styled for displaying the current expression and value with the 'Digital-7' font.
+
+7. **Calculator Buttons**:
+  - `.calculator-buttons`: Uses a grid layout with 4 columns and spacing between buttons.
+  - `.calculator-button`: Styled with a light background, rounded borders, and hover effects for interactivity.
+
+8. **Additional Effects**:
+  - Shadows and rounded corners are applied to various elements for a modern and polished look.
+*/
 body {
   background: url("./assets/images/tim-mossholder-ysDq0fY-bzo-unsplash.jpg");
   background-size: cover;
@@ -49,18 +79,6 @@ body {
     margin-bottom: 20px;
   }
   
-  /* .calculator-display {
-    width: 100%;
-    margin-bottom: 20px;
-    background-color: #fff;
-    border: 1px solid #ccc;
-    border-radius: 5px;
-    text-align: right;
-    padding-top: 10px;
-    padding-bottom: 10px;
-    height: 60px;
-    box-shadow: inset 5px 5px 10px rgba(0, 0, 0, 0.2);
-  } */
 
   .top-display {
     font-family: 'Digital-7', sans-serif;

@@ -1,5 +1,19 @@
 import { evaluate } from 'mathjs'; // Importing evaluate function from mathjs
 
+/**
+ * Handles the evaluation of a mathematical expression in the calculator's state.
+ *
+ * @param {Object} state - The current state of the calculator.
+ * @param {string} state.expression - The mathematical expression to evaluate.
+ * @param {string} [state.displayValue] - The current value displayed on the calculator.
+ * @param {number|null} [state.lastAnswer] - The last evaluated result, used for the "ANS" button.
+ * @param {boolean} [state.evaluated] - Indicates whether the expression has been evaluated.
+ * @returns {Object} The updated state of the calculator after evaluation.
+ * @property {string} displayValue - The result of the evaluation or an error message.
+ * @property {string} expression - The updated expression, typically the result or cleared on error.
+ * @property {number|null} lastAnswer - The result of the evaluation or null on error.
+ * @property {boolean} evaluated - Indicates whether the evaluation was successful.
+ */
 export const handleEquals = (state) => {
   let { expression } = state;
 

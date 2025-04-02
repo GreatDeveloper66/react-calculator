@@ -1,3 +1,16 @@
+/**
+ * Handles the addition of operators to the calculator's state.
+ *
+ * @param {Object} prevState - The previous state of the calculator.
+ * @param {string} prevState.displayValue - The current value displayed on the calculator.
+ * @param {string} prevState.expression - The current mathematical expression being built.
+ * @param {boolean} prevState.evaluated - Indicates if the previous state was the result of an evaluation.
+ * @param {string} operator - The operator to be added to the expression (e.g., "+", "-", "*", "/").
+ * @returns {Object} The updated state of the calculator.
+ * @returns {string} return.displayValue - The updated value to display on the calculator.
+ * @returns {string} return.expression - The updated mathematical expression.
+ * @returns {boolean} return.evaluated - Indicates if the expression has been evaluated (always false after this function).
+ */
 export const handleOperators = (prevState, operator) => {
     let { displayValue, expression, evaluated } = prevState;
   

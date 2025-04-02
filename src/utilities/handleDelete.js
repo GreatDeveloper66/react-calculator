@@ -1,3 +1,11 @@
+/**
+ * Handles the deletion of the last character from the calculator's display and expression.
+ *
+ * @param {Object} state - The current state of the calculator.
+ * @param {string} state.displayValue - The current value displayed on the calculator.
+ * @param {string} state.expression - The current mathematical expression being built.
+ * @returns {Object} The updated state after handling the delete operation.
+ */
 export const handleDelete = (state) => {
     let { displayValue, expression } = state;
   

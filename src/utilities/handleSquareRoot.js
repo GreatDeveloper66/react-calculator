@@ -1,6 +1,20 @@
 import { sqrt, evaluate } from "mathjs";
 // Import the sqrt function and evaluate from mathjs
 
+/**
+ * Handles the square root operation for a calculator's state.
+ *
+ * This function processes the current `displayValue` and `expression` in the calculator's state
+ * to compute the square root of a number or an expression, depending on the context.
+ * It ensures that invalid operations (e.g., square root of an operator or negative number) 
+ * do not modify the state.
+ *
+ * @param {Object} state - The current state of the calculator.
+ * @param {string} state.displayValue - The current value displayed on the calculator.
+ * @param {string} state.expression - The full mathematical expression being evaluated.
+ * @returns {Object} The updated state with the square root operation applied, or the original state if invalid.
+ * @throws Will catch and handle any errors that occur during calculation.
+ */
 export const handleSquareRoot = (state) => {
   let { displayValue, expression } = state;
   const lastChar = displayValue.slice(-1);
@@ -12,19 +26,27 @@ export const handleSquareRoot = (state) => {
 
   // Case 1: Last character is a number → find full number and calculate its square root
   if (/\d/.test(lastChar)) {
-      const match = displayValue.match(/(\d+\.?\d*)$/);
-      if (match) {
-          const number = match[1];
-          const squareRoot = sqrt(parseFloat(number));
-          // If the result is NaN (negative number), return unchanged state
-          if (isNaN(squareRoot)) {
-              return state; // You can handle this as an error state if desired
-          }
-          return {
-              displayValue: displayValue.replace(/(\d+\.?\d*)$/, squareRoot.toString()),
-              expression: expression.replace(/(\d+\.?\d*)$/, squareRoot.toString()),
-          };
-      }
+     try {
+        const match = displayValue.match(/(\d+\.?\d*)$/);
+        if (match) {
+            const number = match[1];
+            const squareRoot = sqrt(parseFloat(number));
+            // If the result is NaN (negative number), return unchanged state
+            if (isNaN(squareRoot)) {
+                return state; // You can handle this as an error state if desired
+            }
+            return {
+                displayValue: displayValue.replace(/(\d+\.?\d*)$/, squareRoot.toString()),
+                expression: expression.replace(/(\d+\.?\d*)$/, squareRoot.toString()),
+            };
+        }
+     } catch (e) {
+        return {
+            displayValue: "Error",
+            expression: "",
+            evaluated: false,
+        }
+    }
   }
 
   // Case 2: Last character is a closing parenthesis → square root of the entire expression inside
@@ -50,4 +72,4 @@ export const handleSquareRoot = (state) => {
 
   // Default: If nothing matches, return unchanged
   return state;
-};
+  };
